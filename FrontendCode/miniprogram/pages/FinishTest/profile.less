@@ -1,0 +1,168 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+    height: 100%;
+    gap: 20px;
+    overflow: visible; /* 确保子容器不会被裁剪 */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 禁止 body 滚动 */
+    
+}
+
+.first {
+    display: flex; /* 启用 Flexbox */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    height: 100px; /* 设置父容器高度 */
+    position: relative; /* 保持原有布局 */
+    text-align: center; /* 水平文本对齐（备用） */
+    background-color: #f0f0f0;
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 40px;
+}
+.question-container{
+    justify-content: center;
+    text-align: center;
+    align-items: center; /* 垂直居中对齐 */
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.1);
+    margin: 20px 40px;
+    display: flex; /* 启用 flex 布局 */
+    flex-direction: column; /* 使内容纵向排列 */
+    padding: 20px;
+}
+
+.information1{
+    margin-top: -20px;
+}
+.text1 {  
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    line-height: 1.8; /* 设置行距，1.5表示行高为字体大小的1.5倍 */
+    text-align: center; /* 文字水平居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* 垂直间距，避免选项挤在一起 */
+    padding: 0 30px; /* 增加水平内边距 */
+    white-space: normal; /* 允许内容换行 */
+    word-wrap: break-word; /* 防止单词过长时溢出 */
+}
+.p1{
+    width: 45%;
+    height: auto; /* 保持比例 */
+    margin: 10px auto; /* 使图片居中 */
+}
+.text2{
+    font-size: x-large;
+    font-weight: 600;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+    flex: 1; /* 使文字占据整个选项容器 */
+}
+.text3{
+    font-size: large;
+    font-weight: 600;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+    flex: 1; /* 使文字占据整个选项容器 */
+}
+
+.text4{
+    font-size: middle;
+    font-weight: 300;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+    flex: 1; /* 使文字占据整个选项容器 */
+}
+
+
+.second {
+    align-items: flex-end; /* 将子元素靠右对齐 */
+    position: relative;
+    margin-top: 70px;
+    text-align: center;
+    flex-grow: 1;
+    padding: 0 20px;
+    justify-content: flex-end; /* 使第二个区域的内容靠右 */
+}
+.a,.b{  
+    display: flex; /* 启用弹性布局 */
+    // justify-content: center; /* 水平居中 */
+    // align-items: center; /* 垂直居中 */
+    width: 100%;  /* 父容器宽度 */
+    height: 150px;  /* 父容器高度 */
+}
+.owl{
+    display: flex; /* 启用弹性布局 */
+    // justify-content: center; /* 水平居中 */
+    // align-items: center; /* 垂直居中 */
+    width: 100%;  /* 父容器宽度 */
+    height: 150px;  /* 父容器高度 */
+    margin-top: -20px;
+}
+.a{
+    margin-left: 80px;
+    margin-bottom: 0px;
+}
+.b{
+    margin-left: 90px;
+    margin-top: -35px;
+}
+.p2{
+    width: 80%;
+    height: 60%;
+}
+.p3{
+    width: 35%;
+    height: 70%;
+}
+.viewtranscript{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #4095E5 !important; /* 使用!important提高优先级 */
+    color: white; /* 按钮字体颜色 */
+    border: none; /* 去掉默认边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 40px; /* 按钮高度 */
+    width: 50%; /* 按钮宽度 */
+    border: 1px solid #ccc; /* 设置灰色边框 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+}
+
+.return {
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #ffffff !important; /* 使用!important提高优先级 */
+    color: rgb(0, 0, 0); /* 按钮字体颜色 */
+    border: 1px solid #ccc; /* 设置灰色边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 30px; /* 按钮高度 */
+    width: 80%; /* 按钮宽度 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+    margin-bottom: 20px;
+}
+

@@ -1,0 +1,99 @@
+<scroll-view class="container">
+  <!-- 顶部标题 -->
+  <view class="first">
+    <image class="back-icon1" src="http://106.54.212.158:8888/images/return.png" alt="返回" bindtap="goBack"></image>
+    <text class = "title">题目集更改</text>
+  </view>
+  <!-- 搜索栏 -->
+  
+  <view class="second">
+    <view class="search-container">
+      <image class="back-icon2" src="http://106.54.212.158:8888/images/picture9.png" alt="返回" bindtap="submitAnswer"></image>
+      <view class="search-bar">
+        <input class="search-input" placeholder="请输入" />
+      </view>
+    </view>
+  </view>
+
+  <view class = "third">
+
+  </view>
+  <!-- 题目集第一行 -->
+  <view class="row">
+    <view
+      id="item-0"
+      class="item {{selectedSet === 'C语言题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="C语言题目集"
+      data-index="0"
+    >
+      <image src="http://106.54.212.158:8888/images/c++.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">C语言题目集</text>
+    </view>
+    <view
+      id="item-1"
+      class="item {{selectedSet === 'Java语言题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="Java语言题目集"
+      data-index="1"
+    >
+      <image src="http://106.54.212.158:8888/images/java.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">Java题目集</text>
+    </view>
+  </view>
+
+  <!-- 题目集第二行 -->
+  <view class="row">
+    <view
+      id="item-2"
+      class="item {{selectedSet === '数据结构题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="数据结构题目集"
+      data-index="2"
+    >
+      <image src="http://106.54.212.158:8888/images/datastructure.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">数据结构题目集</text>
+    </view>
+    <view
+      id="item-3"
+      class="item {{selectedSet === 'Python语言题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="Python语言题目集"
+      data-index="3"
+    >
+      <image src="http://106.54.212.158:8888/images/python.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">Python题目集</text>
+    </view>
+  </view>
+
+  <view class="slider">
+    <view 
+      class="dot {{currentIndex === 0 ? 'active' : ''}}" 
+      data-index="0" 
+      bindtap="changeDot">
+    </view>
+    <view 
+      class="dot {{currentIndex === 1 ? 'active' : ''}}" 
+      data-index="1" 
+      bindtap="changeDot">
+    </view>
+    <view 
+      class="dot {{currentIndex === 2 ? 'active' : ''}}" 
+      data-index="2" 
+      bindtap="changeDot">
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="forth">
+
+    <view class="Previousquestion" bindtap="goPrevious" >
+      <text class="text6">上一页</text>
+    </view>
+    <view class="Nextquestion"  bindtap="goNext">
+      <text class="text8">下一页</text>
+    </view>
+
+  </view>
+
+</scroll-view>

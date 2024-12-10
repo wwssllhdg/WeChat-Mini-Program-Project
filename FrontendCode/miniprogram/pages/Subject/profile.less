@@ -1,0 +1,209 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+    height: 100%;
+    gap: 20px;
+    overflow: visible; /* 确保子容器不会被裁剪 */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 禁止 body 滚动 */   
+}
+.first {
+    display: flex; /* 使用Flexbox布局 */
+    align-items: center; /* 垂直居中对齐 */
+    position: relative;
+
+}
+
+.back-icon1 {
+    width: 30px; /* 图片宽度 */
+    height: 30px; /* 图片高度 */
+    border-radius: 50%; /* 设置为圆形 */
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left:100px;
+    margin-top: 50px;
+}
+.second {
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    width: 100%; /* 确保宽度为100% */
+    height: 50px; /* 可以根据需要设置高度 */
+    margin-top: 0px;
+}
+  .search-container {
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+  }
+  
+  .back-icon2 {
+    width: 25px; /* 图片宽度 */
+    height: 25px; /* 图片高度 */
+    margin-right: 10px; /* 与搜索框之间的间距 */
+  }
+  
+  .search-bar {
+    flex: 1; /* 让搜索框占据剩余空间 */
+    max-width: 300px; /* 限制搜索框最大宽度 */
+    display: flex;
+    padding: 5px;
+    border: 2px solid #ccc; /* 边框 */
+    border-radius: 25px; /* 圆角 */
+    background-color: #ffffff; /* 背景色 */
+  }
+  
+  .search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+  }
+  .third{
+    width: 100%;              /* 宽度占满整行 */
+    height: 15px;             /* 设置较小的高度 */
+    background-color:#f0f0f0; /* 灰色背景 */
+    margin-top: 10px;         /* 与搜索框之间的间距 */
+  }
+/* 每行的样式 */
+.row {
+    display: flex;
+    justify-content: space-between; /* 使项目之间的间距减小 */
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;            /* 减小行与行之间的间距 */
+  }
+  
+  /* 每个项目的样式 */
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;                    /* 设置宽度以拉长块，减小两者间距 */
+    margin: 0 5px;                 /* 减小图片与图片之间的间距 */
+    border: 2px solid #4095E5;     /* 始终保持蓝色边框 */
+    border-radius: 30px;           /* 圆角边框 */
+    background-color: white;       /* 默认背景颜色 */
+    padding: 10px;                 /* 内边距，增加块内的高度 */
+    height: 180px;                 /* 设置固定高度以拉长块 */
+    transition: background-color 0.3s; /* 平滑背景色过渡 */
+  }
+  
+  /* 选中时的背景颜色 */
+  .item-selected {
+    background-color: #d0e7ff;     /* 选中时的淡蓝色背景 */
+  }
+  
+  /* 选中时的文本颜色为白色 */
+  .item-selected .item-text {
+    color: #ffffff;                /* 选中时文本颜色为白色 */
+  }
+  
+  /* 图片样式 */
+  .item-image {
+    width: 140px;                  /* 图片宽度 */
+    height: 140px;                 /* 图片高度 */
+    border-radius: 50%;            /* 设置为圆形 */
+  }
+  
+  /* 文本样式 */
+  .item-text {
+    margin-top: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;                   /* 默认文本颜色 */
+    text-align: center;
+  }
+  
+
+
+/* 滑块容器样式 */
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #69b4ff; /* 背景颜色为蓝色 */
+    padding: 10px 20px;
+    width: fit-content;
+    border-radius: 25px; /* 圆角边框 */
+    margin: 20px auto; /* 居中显示 */
+  }
+  
+  /* 单个小圆点样式 */
+  .dot {
+    width: 15px;                /* 小圆点宽度 */
+    height: 15px;               /* 小圆点高度 */
+    background-color: #e0e0e0;  /* 默认小圆点颜色为灰色 */
+    border-radius: 50%;         /* 将小圆点设置为圆形 */
+    margin: 0 5px;              /* 小圆点之间的间距 */
+  }
+  
+  /* 激活状态的小圆点样式 */
+  .dot.active {
+    background-color: #ffffff;  /* 选中状态的小圆点颜色为白色 */
+  }
+  .forth{
+    align-items: center; /* 垂直居中对齐 */
+    position: relative; 
+    margin-top:0px;
+    display:flex;
+    margin-left:100px;
+}
+.Previousquestion{
+    margin-left: -40px;
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #4095E5 !important; /* 使用!important提高优先级 */
+    color: white; /* 按钮字体颜色 */
+    border: none; /* 去掉默认边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 45px; /* 按钮高度 */
+    width: 40%; /* 按钮宽度 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.1);
+
+}
+.text6{
+    font-size: large;
+    font-weight: 700;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+}
+.Nextquestion{
+    margin-left: 50px;
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #4095E5 !important; /* 使用!important提高优先级 */
+    color: white; /* 按钮字体颜色 */
+    border: none; /* 去掉默认边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 45px; /* 按钮高度 */
+    width: 40%; /* 按钮宽度 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.text8{
+    font-size: large;
+    font-weight: 700;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+}
+

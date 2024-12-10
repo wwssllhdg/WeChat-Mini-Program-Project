@@ -1,0 +1,65 @@
+
+
+<scroll-view class="container" style="background-image: url('http://106.54.212.158:8888/images/background.png'); background-size: cover; width: 100%; height: 100vh;">
+  <!-- 自定义返回图标 -->
+  <view class="first">
+    <image class="back-icon" src="http://106.54.212.158:8888/images/return.png" alt="返回" bindtap="goBack"></image>
+    <text class = "title">查看报告</text>
+  </view>
+  <view class = "question-container">
+    <!-- 题目描述 -->
+    <view class="second">
+        <text class = "a">{{questionNo}}.</text>
+        <text class="text1">{{questionName}}</text> <!-- 显示题目内容 -->
+    </view>
+
+    <!-- True / False -->
+    <view class="third">
+      <view class="option-container  A {{TrueClass}}" bindtap="selectOption" data-option="True">
+        <view class="option-prefix">A</view>
+        <view class="option-content">
+          <text class="option-text">True</text>
+        </view>
+      </view>
+      <view class="option-container  B {{FalseClass}}" bindtap="selectOption" data-option="False">
+        <view class="option-prefix">B</view>
+        <view class="option-content">
+          <text class="option-text">False</text>
+        </view>
+      </view>
+
+      <!-- ChatGPT问答 -->
+      <view class="Answer" bindtap="Chatgpt">
+        <image class="p1" src="http://106.54.212.158:8888/images/picture8.png" alt="返回"   ></image>
+        <text class="text7" >提问</text>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 上一题/下一题 -->
+  <view class="forth">
+    <view class="Previousquestion" bindtap="goPrevious" wx:if="{{!isReviewing && !isFirstQuestion}}">
+      <text class="text4">上一题</text>
+    </view>
+    <view class="Previousquestion transparent" wx:if="{{isFirstQuestion}}">
+    <!-- 第一题时显示透明占位 -->
+      <text class="text4"></text>
+    </view>
+  
+
+
+
+
+    <view class="Nextquestion" wx:if="{{!isLastQuestion}}" bindtap="goNext">
+        <text class="text6">下一题</text>
+    </view>
+
+     <view class="Submit transparent" wx:if="{{isLastQuestion}}" >
+        <text class="text6"></text>
+    </view>
+
+  </view>
+
+
+</scroll-view>

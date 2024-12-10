@@ -1,0 +1,89 @@
+<scroll-view class="container" >
+  <!-- 顶部标题 -->
+  <view class="first">
+    <image class="back-icon1" src="http://106.54.212.158:8888/images/return.png" alt="返回" bindtap="goBack1"></image>
+    <text class = "title">测试成绩单</text>
+  </view>
+  
+
+  <view class="container1">
+    <view class="header">
+      <text class="total-text">共10道题</text>
+      <view class="legend">
+        <view class="legend-item">
+          <view class="circle correct"></view>
+          <text class="legend-text">答对</text>
+        </view>
+        <view class="legend-item">
+          <view class="circle incorrect"></view>
+          <text class="legend-text">答错</text>
+        </view>
+      </view>
+    </view>
+
+  <view class="question-grid">
+    <block wx:for="{{questions}}" wx:key="index">
+      <view 
+        class="question-item {{selectedIndex === index ? 'selected' : ''}}" 
+        bindtap="onCircleClick" 
+        data-question-no="{{item.everytestNo}}" 
+        data-index="{{index}}"
+      >
+        <text class="question-number">{{item.everytestNo}}</text>
+        <image 
+          wx:if="{{item.everytestIsCorrect === 1}}" 
+          src="http://106.54.212.158:8888/images/picture11.png" 
+          class="status-icon"
+        />
+        <image 
+          wx:if="{{item.everytestIsCorrect === 0}}" 
+          src="http://106.54.212.158:8888/images/picture10.png" 
+          class="status-icon"
+        />
+      </view>
+    </block>
+  </view>
+
+
+  <view class="containe2">
+  <!-- 打败了百分比 -->
+  <view class="percentage-section">
+    <text class="percentage-text">你打败了 <text class="highlight">{{testLevel}}%</text> 的参赛选手</text>
+  </view>
+
+  <!-- 本次测试分析 -->
+  <view class="analysis-section">
+    <text class="section-title">本次测试分析</text>
+    <view class="analysis-item">
+      <image src="http://106.54.212.158:8888/images/picture13.png" class="icon" />
+      <text class="analysis-text">你的代码分析能力较强</text>
+    </view>
+    <view class="analysis-item">
+      <image src="http://106.54.212.158:8888/images/picture12.png" class="icon" />
+      <text class="analysis-text">你的逻辑运算能力较弱</text>
+    </view>
+  </view>
+
+  <!-- 本次正确率分析 -->
+  <view class="accuracy-section">
+    <text class="section-title">本次正确率分析</text>
+    <view class="chart-container">
+      <canvas canvas-id="accuracyChart" class="chart"></canvas>
+      <view class="legend">
+        <view class="legend-item">
+          <view class="legend-color correct-color"></view>
+          <text>正确</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color incorrect-color"></view>
+          <text>错误</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+  <view class="button1">
+     <button class="btnItem" type="primary" bindtap="goBack">我已知晓</button>
+  </view>
+ </view>
+</scroll-view>

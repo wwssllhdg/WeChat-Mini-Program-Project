@@ -1,0 +1,79 @@
+<scroll-view view class="container">
+  <view class="first">
+    <image class="back-icon1" src="http://106.54.212.158:8888/images/return.png" alt="返回" bindtap="goBack"></image>
+  <text class = "title">测试记录</text>
+  </view>
+  <!-- 选项卡导航 -->
+  <view class="tabs">
+    <text class="tab {{selectedSubject === 1 ? 'active' : ''}}" data-subject-id="1" bindtap="onTabSelect">C语言</text>
+    <text class="tab {{selectedSubject === 2 ? 'active' : ''}}" data-subject-id="2" bindtap="onTabSelect">数据结构</text>
+    <text class="tab {{selectedSubject === 3 ? 'active' : ''}}" data-subject-id="3" bindtap="onTabSelect">Java</text>
+    <text class="tab {{selectedSubject === 4 ? 'active' : ''}}" data-subject-id="4" bindtap="onTabSelect">Python</text>
+  </view>
+
+<view class="question-record">
+  <swiper 
+    class="swiper-container" 
+    indicator-dots="true" 
+    circular="false" 
+    autoplay="false" 
+    current="{{currentSwiperIndex}}"
+  >
+    <block wx:for="{{swiperButtons}}" wx:key="index">
+      <swiper-item>
+        <view class="question-numbers">
+          <block wx:for="{{item}}" wx:key="testId">
+            <view 
+              class="circle {{selectedIndex === item.index ? 'selected' : ''}}" 
+              data-index="{{item.index}}"
+              data-test-id="{{item.testId}}"
+              data-test-score="{{item.testScore}}"
+              data-test-time="{{item.testTime}}"
+              bindtap="onCircleTap"
+            >
+              {{item.index + 1}}
+            </view>
+          </block>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+</view>
+
+<!-- 显示测试时间和测试得分 -->
+<view class="second">
+  <view class="test-info">
+    <text class="test-date">测试时间: {{selectedTestTime}}</text>
+    <text class="test-score">测试得分: {{selectedTestScore}}分</text>
+  </view>
+</view>
+
+
+<!-- 数据分析 -->
+<view class="data-analysis">
+  <text class="section-title">该题目集下数据分析</text>
+  <view class="data-item">
+    <image src="/image/picture14.png" class="icon" />
+    <view class="data-texts">
+      <text class="data-text1">您的{{subjectName}}一共参加了{{testCount}}次测试</text>
+      <text class="data-text2">平均分为 {{averageScore}}分</text>
+    </view>
+  </view>
+</view>
+
+<view class="chart-section">
+  <text class="section-title">历次成绩分析</text>
+  <scroll-view class="chart-scroll" scroll-x="true" scroll-left="{{scrollLeft}}">
+    <view class="chart-container" style="width: {{chartContainerWidth}}px;">
+      <canvas canvas-id="scoreChart" class="chart"></canvas>
+    </view>
+  </scroll-view>
+</view>
+
+
+  <view class="button1">
+    <button class="btnItem" bindtap="goBack">我已知晓</button>
+  </view>
+
+</scroll-view>

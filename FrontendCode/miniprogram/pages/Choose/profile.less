@@ -1,0 +1,251 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+    height: 100%;
+    gap: 20px;
+    overflow: visible; /* 确保子容器不会被裁剪 */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 禁止 body 滚动 */
+    
+}
+
+.first {
+    display: flex; /* 使用Flexbox布局 */
+    align-items: center; /* 垂直居中对齐 */
+    position: relative;
+
+}
+
+.back-icon {
+    width: 30px; /* 图片宽度 */
+    height: 30px; /* 图片高度 */
+    border-radius: 50%; /* 设置为圆形 */
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left:105px;
+    margin-top: 50px;
+}
+.question-container{
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px; /* 圆角 */
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+    margin: 20px 20px; /* 上下 20px，两侧 15px */
+
+}
+/* 题目内容容器 */
+.second {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px 20px;
+    max-height: 200px;          /* 最大高度 */
+    overflow-y: auto;           /* 垂直滚动条 */
+    border-radius: 10px;        /* 圆角 */
+    background-color: #fff;
+  }
+  
+  /* 题目文字样式 */
+  .text1 {
+    line-height: 1.5;           /* 行高 */
+    font-size: 16px;            /* 字体大小 */
+    color: #333;
+    word-wrap: break-word;      /* 允许长单词换行 */
+  }
+.a {
+    margin-right: 10px;      /* 序号和内容之间的间距 */
+    font-weight: bold;       /* 加粗序号 */
+    font-style: italic;      /* 倾斜样式 */
+    color: #0056D2;          /* 蓝色，与第一张图的颜色一致 */
+    font-size: 18px;         /* 序号字体大小 */
+  }
+
+.third{
+    align-items: center; /* 垂直居中对齐 */
+    position: relative; 
+    margin-top:-5px;
+}
+.third {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  
+}
+
+
+
+.text2, .text3, .text4, .text5 {
+    font-size: medium;
+    font-weight: 600;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+    flex: 1; /* 使文字占据整个选项容器 */
+    margin-top:-10px;
+    margin-left:-10px;
+}
+
+.transparent {
+    opacity: 0; /* 全透明 */
+    pointer-events: none; /* 禁用点击事件 */
+  }
+  
+
+.forth{
+    align-items: center; /* 垂直居中对齐 */
+    position: relative; 
+    margin-top:40px;
+    display:flex;
+    margin-left:100px;
+}
+.Previousquestion{
+    margin-left: -40px;
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #4095E5 !important; /* 使用!important提高优先级 */
+    color: white; /* 按钮字体颜色 */
+    border: none; /* 去掉默认边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 45px; /* 按钮高度 */
+    width: 40%; /* 按钮宽度 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+}
+.text6{
+    font-size: large;
+    font-weight: 500;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+}
+.Nextquestion{
+    margin-left: 50px;
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #4095E5 !important; /* 使用!important提高优先级 */
+    color: white; /* 按钮字体颜色 */
+    border: none; /* 去掉默认边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 45px; /* 按钮高度 */
+    width: 40%; /* 按钮宽度 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+}
+
+.text8{
+    font-size: large;
+    font-weight: 500;
+    position: relative;
+    text-align: center; /* 文字水平居中 */
+}
+
+
+
+
+/* 选中时的样式 */
+.selected {
+    background-color:  #4095E5 ;  /* 选中时背景颜色 */
+    color: white;  /* 选中时文字颜色 */
+    opacity: 1;  /* 取消透明度 */
+}
+
+
+
+
+/* 选项容器样式 */
+.option-container {
+    display: flex;
+    align-items: stretch;         /* 让子元素填满整个高度 */
+    background-color: #e0e0e0;   /* 默认内容背景色 */
+    border: 1px solid #ccc;      /* 默认边框颜色 */
+    border-radius: 10px;          /* 圆角边框 */
+    margin: 10px 0;              /* 上下间距 */
+    overflow: hidden;            /* 确保子元素不会超出边框 */
+    transition: all 0.3s ease;
+    height: 50px;
+    width: 280px;
+    overflow-y: auto;             /* 超出时允许滚动 */
+  }
+  
+  /* 选中状态样式 */
+  .option-container.selected {
+    background-color: #d0eaff;   /* 选中时内容背景色 */
+    border-color: #4095E5;       /* 选中时边框颜色 */
+  }
+  
+  /* 选项前缀样式 */
+  .option-prefix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;                 /* 固定宽度 */
+    font-size: 16px;             /* 字母大小 */
+    font-weight: bold;           /* 字体加粗 */
+    color: #333;                 /* 默认字体颜色（黑色） */
+    background-color: #fff;      /* 默认背景颜色（白色） */
+    border-right: 2px solid #ccc;/* 右侧分隔线 */
+    transition: all 0.3s ease;
+  }
+  
+  /* 选中时的选项前缀样式 */
+  .option-container.selected .option-prefix {
+    background-color: #4095E5;   /* 选中时背景蓝色 */
+    color: #fff;                 /* 选中时字体白色 */
+    border-right: 2px solid #4095E5; /* 选中时分隔线颜色 */
+  }
+  
+  /* 选项内容样式 */
+  .option-content {
+    flex: 1;                    /* 占满剩余空间 */
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;         /* 调整内边距，增加垂直空间 */
+    overflow-y: auto;           /* 如果内容过多，显示滚动条 */
+    max-height: 100px;          /* 限制最大高度，超过时滚动 */
+    line-height: 1.5;           /* 设置行高，增加可读性 */
+  }
+  
+  /* 选项文字样式 */
+  .option-text {
+    font-size: 16px;
+    color: #333;                 /* 默认字体颜色（黑色） */
+    white-space: normal;          /* 允许文本换行 */
+    word-break: break-word;       /* 长单词换行 */
+  }
+  
+
+.D{
+    margin-bottom: 50px;
+}
+
+
+.Submit{
+    margin-left: 50px;
+    display: flex; /* 启用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #4095E5 !important; /* 使用!important提高优先级 */
+    color: white; /* 按钮字体颜色 */
+    border: none; /* 去掉默认边框 */
+    border-radius: 20px; /* 圆角 */
+    height: 45px; /* 按钮高度 */
+    width: 40%; /* 按钮宽度 */
+    font-size: 18px; /* 按钮文字大小 */
+    font-weight: bold; /* 按钮文字粗细 */
+    box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+}

@@ -1,0 +1,38 @@
+<scroll-view class="scroll-view_H" scroll-y="true">
+  <view class="outLayer">
+  <view class="first">          
+    <image class="back-icon" src="http://106.54.212.158:8888/images/return.png" alt="返回" bindtap="goBack"></image>
+    <view class="title">注册</view>
+  </view>
+    <view class="set">
+
+      <view class="Phonenumber" style="background-color: #FFF;">   
+        <text class="login">手机号:</text>   
+        <input class="inputItem1" placeholder="请输入手机号" bindinput="onPhoneInput"></input>
+      </view>
+    
+      <view class="code" style="background-color: #FFF;">   
+        <text class="login">密码:</text>   
+        <input class="inputItem" type="password" type="password"placeholder="请输入密码" bindinput="onCodeInput"></input>
+    
+      </view>
+
+      <view class="password" style="background-color: #FFF;">
+        <text class="login">密码:</text>  
+        <input class="inputItem " type="password" placeholder="请再次确认密码" bindinput="onPasswordInput"></input>
+      </view>
+
+      <view class="UserAgreement">
+        <image class="picture" mode="widthFix" src="http://106.54.212.158:8888/images/UserAgreement.png"></image>
+      <text class="agreement">用户协议</text>
+    </view>
+  </view>
+
+
+
+    <view class="button1">
+      <button class="btnItem" type="primary" bindtap="onRegister">注册</button>
+    </view>
+    
+  </view>
+</scroll-view>

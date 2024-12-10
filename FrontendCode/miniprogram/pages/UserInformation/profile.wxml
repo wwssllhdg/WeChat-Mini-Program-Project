@@ -1,0 +1,58 @@
+<scroll-view class="container" style="background-image:url('http://106.54.212.158:8888/images/background.png'); background-size: cover; width: 100%; height: 100vh;">
+  
+  <view  class="first" > 
+    <image class="back-icon" src="http://106.54.212.158:8888/images/return.png" alt="返回" bindtap="goback"></image>
+  </view>
+  <!-- 个人资料部分 -->
+  <view class="profile-section">
+    <text class="profile-title">个人资料</text>
+    <image src="http://106.54.212.158:8888/images/picture3.png" class="profile-image" mode="aspectFill"></image>
+  </view>
+  <view class = "information">
+    <!-- 五行文本框 -->
+    <view class="info-item">
+      <text class="info-label">昵称|</text>
+      <input class="info-input" value="{{nickname}}" bindinput="onNicknameChange" />
+    </view>
+
+    <view class="info-item">
+      <text class="info-label">性别|</text>
+      <view class="gender-options">
+        <view class="gender male {{selectedGender === 'male' ? 'selected' : ''}}" bindtap="chooseGender" data-gender="male">男</view>
+        <view class="gender female {{selectedGender === 'female' ? 'selected' : ''}}" bindtap="chooseGender" data-gender="female">女</view>
+      </view>
+    </view>
+
+    <view class="info-item">
+      <text class="info-label">生日|</text>
+      <view class="picker-container">
+        <picker mode="date" start="1980-1-30" bindchange="bindDateChange" value="{{date}}">
+          <view class="input-card">
+            <block wx:if="{{showPlaceholder}}">
+              <text class="input-travelDate">选择生日</text>
+            </block>
+            <block wx:else>
+              <text class="picker-text">{{date}}</text>
+            </block>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="info-item">
+      <text class="info-label">签名|</text>
+      <input class="info-input" value="{{signature}}" bindinput="onSignatureChange" />
+    </view>
+
+    <view class="info-item">
+      <text class="info-label">学校|</text>
+      <input class="info-input" value="{{school}}" bindinput="onSchoolChange" />
+    </view>
+  </view>
+  <!-- 保存按钮 -->
+  <view class="save-button" bindtap="saveProfile">
+    <text class="save-text">保存</text>
+  </view>
+
+
+</scroll-view>

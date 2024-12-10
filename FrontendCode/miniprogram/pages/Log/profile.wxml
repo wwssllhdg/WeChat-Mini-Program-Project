@@ -1,0 +1,24 @@
+<view class="container" style="background-image: url('http://106.54.212.158:8888/images/log.png'); background-size: cover; width: 100%; height: 100vh;">
+
+
+  <view class="container1" >
+
+
+    <view class="login-form">
+
+      <view class="input-wrapper1">
+        <input type="text" class="input" placeholder="请输入手机号" bind:input="onPhoneInput" />
+      </view>
+      <view class="input-wrapper2">
+        <input type="password" class="input" placeholder="请入密码" bind:input="onPasswordInput" />
+      </view>
+
+      <text class="attention">登录/注册表示您同意《用户协议》和《隐私政策》</text>
+      <view class="button-container">
+          <button class="button login-button" bindtap="onLogin">登录</button>
+          <button class="button register-button" bindtap="onRegister">注册</button>
+      </view>
+
+    </view>
+  </view>
+</view>

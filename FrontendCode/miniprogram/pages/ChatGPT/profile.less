@@ -1,0 +1,255 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+    height: 100%;
+    gap: 20px;
+    overflow: visible; /* 确保子容器不会被裁剪 */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 禁止 body 滚动 */
+    
+}
+
+.outer {
+    width: 100%; 
+    max-width: 1200px; /* 限制最大宽度 */
+
+}
+
+.first{
+    display: flex;
+}
+.first, .second, .third, .forth, .fifth {
+    margin-bottom: 20px;
+}
+
+.text1, .text2, .text3, .text4, .text5, .text6, .text7 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+}
+.picture1 {
+    width: 15%;
+    height: 15%;
+    position: relative;
+    margin-left: 90px;
+    margin-top: 35px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
+    transform: rotate(-10deg); /* 设置旋转角度 */
+    
+    /* 使用渐变遮罩，使得图片边缘淡化 */
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+}
+.choose{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.a{
+    margin-top: 52px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.picture2{
+    width: 12.5%;
+    height: 12.5%;
+    position: relative;
+    margin-top: 45px;
+    margin-left: 90px;    
+    border-radius: 50%; /* 使图片圆形 */
+    overflow: hidden; /* 确保超出部分隐藏 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
+}
+
+.picture3 {
+    margin-left: 95px;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    align-items: center; /* 垂直居中 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.picture4{
+    width: 90%;
+    height: 90%;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    margin-top: -10px;
+}
+.picture5{
+    width: 45%;
+    height: 45%;
+    position: relative;
+    text-align: center;
+
+    margin-top: 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+}
+.picture2:hover, .picture3:hover {
+    transform: scale(1.1); /* 鼠标悬停时放大效果 */
+}
+
+
+.pentagram {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+.star, .star1 {
+    width: 30px;
+    height: 30px;
+    background-color: #fafafa;
+    margin: 5px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    position: relative;
+}
+
+.star1 {
+    background-color: #4095E5 !important; /* 星星背景变成蓝色 */
+   
+}
+
+.star::before, .star::after, .star1::before, .star1::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid #fafafa;
+    position: absolute;
+    left: -50px;
+    top: 30px;
+    transform: rotate(72deg);
+}
+
+.star1::before, .star1::after {
+    border-top: 100px solid  #4095E5; /* 星星变成金色 */
+}
+
+.text4 {
+    color: #ff4500; /* 红色强调 */
+    text-align: center;
+    margin-top: 0px;
+
+}
+
+.forth {
+    display: flex; /* 使用弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 100%; /* 如果需要，让父元素高度支持垂直居中 */
+    text-align: center;
+}
+
+.text5 {
+    color: #888;
+    font-size: 18px;
+    font-weight: 600;
+
+    
+}
+.score-block, .rank-block {
+    margin-top: 20px;
+    border: 3px solid #a1ccf5; /* 蓝色边框 */
+    background-color: white;   /* 白色背景 */
+    border-radius: 10px;       /* 圆角 */
+    margin-bottom: 10px;       /* 块与块之间的间隔 */
+    width: 300px;
+    margin-left: 40px;
+}
+
+.text3, .text5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;   /* 使用蓝色字体 */
+    margin-top: 10px;
+}
+
+.text4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;       /* 浅黑色字体 */
+}
+
+.star, .star1 {
+    width: 20px;
+    height: 20px;
+    background-color: #DCDCDC;  /* 默认星星的颜色 */
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);  /* 创建五角星形状 */
+}
+
+
+
+
+
+
+.bottom-nav {
+    display: flex; /* 使用弹性布局 */
+    width: 100vw; /* 确保宽度填满整个视口 */
+    justify-content: space-evenly; /* 导航项均匀分布 */
+    align-items: center; /* 垂直居中对齐 */
+    background-color: #4095E5; /* 设置背景色 */
+    padding: 10px 0; /* 内边距确保导航项间距合适 */
+    position: fixed; /* 固定在页面底部 */
+    bottom: 0; /* 紧贴底部 */
+    left: 0; /* 紧贴左侧 */
+    z-index: 100; /* 确保导航栏在最上层 */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    border-top: 1px solid #ccc; /* 可选：增加顶部边框 */
+}
+
+.nav-item, .nav-it {
+    flex: 1; /* 平均分配宽度 */
+    text-align: center; /* 文本居中对齐 */
+    font-size: 18px; /* 字体更大 */
+    font-weight: bold; /* 加粗 */
+    color: white; /* 字体颜色 */
+    padding: 10px 0; /* 增大点击区域 */
+    transition: all 0.3s ease; /* 添加过渡效果 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+}
+
+.nav-it {
+    font-size: 18px;                    /* 字体更大 */
+    font-weight: bold;                  /* 加粗 */
+    color: #ffffff;                     /* 设置主导航项颜色 */
+
+  }
+  
+  .nav-it1 {
+    font-size: 18px;                      /* 字体更大 */
+    font-weight: bold;                    /* 加粗 */
+    color: #ffffff;                       /* 设置主导航项颜色 */
+    display: inline-block;                /* 使边框下划线与文本宽度匹配 */
+    border-bottom: 2px solid #ffffff;     /* 使用 border-bottom 添加更粗的下划线 */
+    padding-bottom: 0px;                  /* 增加下划线与文本之间的间距 */
+  }
+   
+
+

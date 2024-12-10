@@ -1,0 +1,240 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px;
+  height: 100%;
+  gap: 20px;
+  overflow: visible; /* 确保子容器不会被裁剪 */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* 禁止 body 滚动 */   
+}
+.first {
+  display: flex; /* 使用Flexbox布局 */
+  align-items: center; /* 垂直居中对齐 */
+  position: relative;
+
+}
+
+.back-icon1 {
+  width: 30px; /* 图片宽度 */
+  height: 30px; /* 图片高度 */
+  border-radius: 50%; /* 设置为圆形 */
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.title{
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  margin-left:100px;
+  margin-top: 50px;
+}
+/* 选项卡样式 */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: #e0f0ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  font-size: 16px;
+  color: #000000;
+  padding: 5px 10px;
+  font-weight: 700;
+}
+
+.tab.active {
+  color: #007bff;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
+/* 滑动容器样式 */
+.swiper-container {
+  width: 100%;
+  height: 100px; /* 根据需要调整高度 */
+}
+
+/* 答题记录样式 */
+.question-record {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 每组圆形的容器样式 */
+.question-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* 圆形之间的间距 */
+  padding: 20px;
+}
+
+/* 圆形样式 */
+.circle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #90caf9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #333;
+  background-color: #fff;
+}
+/* 选中圆形样式 */
+.circle.selected {
+  background-color: #42a5f5;
+  color: #fff;
+  border-color: #42a5f5;
+}
+
+.second{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+/* 测试时间和得分样式 */
+.test-info {
+  margin-left: 60px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: #90caf9;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.test-info text {
+  display: block; /* 强制换行 */
+  margin-bottom: 5px; /* 添加下边距以增加行间距 */
+}
+
+
+
+
+/* 数据分析容器样式 */
+.data-analysis {
+  margin-bottom: 20px;
+}
+
+/* 标题样式 */
+.section-title {
+  border-left: 4px solid #4095E5;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-left: 10px; /* 标题左内边距 */
+  margin-left: 20px;
+}
+
+/* 图标样式 */
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;        /* 图标和文字之间的间距 */
+  margin-left: 20px;
+}
+
+/* 图标和文字的容器 */
+.data-item {
+  display: flex;
+  align-items: flex-start; /* 使文字和图标顶部对齐 */
+  margin-bottom: 5px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+/* 文本容器 */
+.data-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 第一行文字样式 */
+.data-text1 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px; /* 增加第一行和第二行之间的间距 */
+}
+
+/* 第二行文字样式 */
+.data-text2 {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+}
+
+
+/* 图表样式 */
+.chart-section {
+  width: 100%;
+  overflow-x: auto;       /* 启用横向滚动 */
+  white-space: nowrap;    /* 防止内部元素换行 */
+  padding-bottom: 10px;   /* 为滚动条留出空间 */
+}
+.chart-container {
+  width: 800px;           /* 设置宽度，确保可以横向滚动 */
+  display: inline-block;  /* 防止容器换行 */
+}
+
+.chart {
+  width: 100%;            /* 宽度填满父容器 */
+  height: 220px;          /* 根据需要调整高度 */
+  background-color: #fff;
+  border: 0px solid #e0e0e0;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+// .chart {
+//   width: 600px;        /* 设置宽度大于 .chart-section 的宽度 */
+//   height: 220px;
+//   background-color: #fff;
+//   border: 1px solid #e0e0e0;
+//   border-radius: 10px;
+ 
+// }
+
+
+
+.button1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btnItem {
+  width: 50%;               /* 或者固定宽度，比如 200px */
+  max-width: 200px;         /* 设置最大宽度 */
+  background-color: #4095E5 !important;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  height: 45px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 6px 0px 6px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+

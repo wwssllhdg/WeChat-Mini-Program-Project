@@ -1,0 +1,69 @@
+<scroll-view class="container" style="background-size: cover; width: 100%; height: 100vh;">
+  <view class="outer">
+      <view class="first" >
+            <image  class="picture1" mode="widthFix" src="http://106.54.212.158:8888/images/return.png" ></image>  
+            <image  class="picture2" mode="widthFix" src="/image/picture1.png" ></image>          
+           <view class="choose" >
+                <text class="text1">
+                 CHatPlus
+                </text>
+           </view>
+           <image class="picture2" mode="widthFix" src="http://106.54.212.158:8888/images/picture3.png" bindtap="navigateToUserInformation"></image>
+      </view>
+      <view class="a">
+            <image class="picture4" mode="widthFix" src="http://106.54.212.158:8888/images/picture2.png" ></image>
+      </view>
+      <view class="second">
+           <image class="picture3" mode="widthFix" src="http://106.54.212.158:8888/images/{{subjectImage}}" bindtap="navigateToSubject"></image> 
+            <view class="text2" >
+                  题目集选择
+            </view>
+      </view>
+      
+      <view class="third">
+      <view class="score-block">
+            <view class="text3">
+                  上一次测试成绩
+            </view>
+            <view class="text4" value="{{testScore}}">
+                  {{testScore}}
+            </view>
+      </view>
+
+      <view class="rank-block">
+            <view class="text5">
+                  您的{{subjectName}}等级评定
+            </view>
+            <view class="pentagram">
+                  <view class="{{userRank >= 1 ? 'star1' : 'star'}}"></view>
+                  <view class="{{userRank >= 2 ? 'star1' : 'star'}}"></view>
+                  <view class="{{userRank >= 3 ? 'star1' : 'star'}}"></view>
+                  <view class="{{userRank >= 4 ? 'star1' : 'star'}}"></view>
+            </view>
+      </view>
+      </view>
+
+
+      <view class="forth" >
+          <image  class="picture5" mode="widthFix" src="http://106.54.212.158:8888/images/picture4.jpg" bindtap="navigateToTest"></image>
+      </view>
+
+
+      <!-- 底部导航 -->
+      <view class="bottom-nav">
+      <view class="nav-it" bindtap="navigateTo" data-page="main">
+      <text class="{{selected === 'main' ? 'nav-it1' : 'nav-item'}}">首页</text>
+      </view>
+
+      <view class="nav-it" bindtap="navigateTo" data-page="record">
+      <text class="{{selected === 'record' ? 'nav-it1' : 'nav-item'}}">测试记录</text>
+      </view>
+
+      <view class="nav-it" bindtap="navigateTo" data-page="user">
+      <text class="{{selected === 'user' ? 'nav-it1' : 'nav-item'}}">我的</text>
+      </view>
+      </view>
+
+      
+  </view>
+</scroll-view>

@@ -1,0 +1,257 @@
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+    height: 100%;
+    gap: 20px;
+    overflow: visible; /* 确保子容器不会被裁剪 */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 禁止 body 滚动 */   
+}
+.first {
+    display: flex; /* 使用Flexbox布局 */
+    align-items: center; /* 垂直居中对齐 */
+    position: relative;
+
+}
+
+.back-icon1 {
+    width: 30px; /* 图片宽度 */
+    height: 30px; /* 图片高度 */
+    border-radius: 50%; /* 设置为圆形 */
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left:100px;
+    margin-top: 50px;
+}
+  /* 容器样式 */
+.container1 {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 总题目数文本样式 */
+.total-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 图例样式 */
+.legend {
+  display: flex;
+  gap: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.correct {
+  background-color: #41d646; /* 绿色 */
+}
+
+.incorrect {
+  background-color: #ff0400; /* 红色 */
+}
+
+.legend-text {
+  font-size: 16px;
+}
+
+/* 问题网格样式 */
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 保持5等分列 */
+  gap: 15px;                             /* 减小网格间距 */
+  padding: 15px;                         /* 设置内边距 */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 25px;
+  box-sizing: border-box;                /* 确保padding不会影响宽度计算 */
+}
+
+/* 每个问题块的样式 */
+.question-item {
+  position: relative;
+  width: 40px;                  /* 宽度占满格子 */
+  height: 40px;
+  border: 2px solid #90caf9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+}
+
+/* 选中时的样式 */
+.question-item.selected {
+  background-color: #42a5f5;
+  color: #ffffff;
+  border-color: #42a5f5;
+}
+
+/* 状态图标样式 */
+.status-icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  bottom: -5px;
+  right: -5px;
+}
+
+
+
+/* 容器样式 */
+.container2 {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* 百分比部分样式 */
+.percentage-section {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.percentage-text {
+  font-weight: bold;
+  display: inline-block;                /* 让元素宽度可调 */
+  border-bottom: 1px solid #d3d3d3;     /* 设置淡灰色横线 */
+  padding-bottom: 5px;                  /* 增加下方间距 */
+  width: calc(62%);             /* 让横线长度略长，超出文本宽度 */
+          
+}
+
+.highlight {
+  color: #4095E5;
+  font-size: 20px;
+}
+.accuracy-section{
+  margin-top: -10px;
+  margin-left: 20px;
+}
+/* 分析部分样式 */
+.analysis-section {
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-left: 4px solid #4095E5;
+  padding-left: 8px;
+}
+
+.analysis-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  margin-left: 15px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.analysis-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 正确率分析部分样式 */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+/* 缩小 chart 尺寸 */
+.chart {
+  margin-left: -20px;
+  width: 150px;   /* 原来 200px，改为 150px */
+  height: 150px;  /* 原来 200px，改为 150px */
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: -20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.correct-color {
+  background-color: #a4ed8e;
+}
+
+.incorrect-color {
+  background-color: #ff4d4f;
+}
+
+.btnItem {
+  background-color: #4095E5 !important; /* 使用!important提高优先级 */
+  color: white; /* 按钮字体颜色 */
+  border: none; /* 去掉默认边框 */
+  border-radius: 20px; /* 圆角 */
+  height: 45px; /* 按钮高度 */
+  width: 100%; /* 按钮宽度 */
+  font-size: 18px; /* 按钮文字大小 */
+  font-weight: bold; /* 按钮文字粗细 */
+  box-shadow: 6px 0px 6px 2px rgba(0, 0, 0, 0.05); /* 四周阴影均匀 */
+}
+.button1{
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 30px;
+}
