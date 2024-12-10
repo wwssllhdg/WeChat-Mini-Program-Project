@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eight.evaluation.mapper.EverytestMapper">
+
+    <resultMap id="BaseResultMap" type="com.eight.evaluation.entity.Everytest">
+            <id property="everytestId" column="everytest_id" jdbcType="INTEGER"/>
+            <result property="everytestTestId" column="everytest_test_id" jdbcType="INTEGER"/>
+            <result property="everytestNo" column="everytest_no" jdbcType="INTEGER"/>
+            <result property="everytestQuestionId" column="everytest_question_id" jdbcType="INTEGER"/>
+            <result property="everytestType" column="everytest_type" jdbcType="INTEGER"/>
+            <result property="everytestUserAnswer" column="everytest_user_answer" jdbcType="VARCHAR"/>
+            <result property="everytestIsCorrect" column="everytest_is_correct" jdbcType="TINYINT"/>
+    </resultMap>
+
+
+
+
+    <update id="submitUserChoiceAnswer">
+        UPDATE everytest et
+        SET
+            et.everytest_user_answer = #{answer},  -- Replace this with the new user answer value
+            et.everytest_is_correct = CASE
+                  WHEN #{answer} = (SELECT qc.question_answer
+                              FROM question_choice qc
+                              WHERE qc.question_id = et.everytest_question_id)
+                      THEN 1
+                  ELSE 0
+                END
+        WHERE
+            et.everytest_test_id = #{testId}  -- Replace this with the specified everytestId
+          AND et.everytest_no = #{everytestNo};  -- Replace this with the specified everytestNo
+
+    </update>
+    <update id="submitUserJudgeAnswer">
+        UPDATE everytest et
+        SET
+            et.everytest_user_answer = #{answer},  -- Replace this with the new user answer value
+            et.everytest_is_correct = CASE
+                  WHEN #{answer} = (SELECT qc.question_answer
+                              FROM question_judge qc
+                              WHERE qc.question_id = et.everytest_question_id)
+                      THEN 1
+                  ELSE 0
+                END
+        WHERE
+            et.everytest_test_id = #{testId}  -- Replace this with the specified everytestId
+          AND et.everytest_no = #{everytestNo};  -- Replace this with the specified everytestNo
+
+    </update>
+    <update id="setScore">
+
+        update test set test_score =#{score},test_userlevel = #{testUserlevel}
+        where test_id =#{testId}
+
+    </update>
+    <select id="getScore" resultType="java.lang.Integer">
+        select sum(everytest_is_correct)
+        from everytest
+        where everytest_test_id = #{testId}
+    </select>
+    <select id="selectQuestions" resultType="com.eight.evaluation.dto.QuestionDTO1">
+        select everytest_no,everytest_is_correct
+        from everytest
+        where everytest_test_id = #{testId}
+
+    </select>
+    <select id="getResult1" resultType="com.eight.evaluation.dto.Result1">
+        SELECT
+            type_id,type_name,
+            COUNT(*) AS count
+        FROM
+            everytest
+                LEFT JOIN
+            question_choice ON everytest.everytest_type = 1
+                AND everytest.everytest_question_id = question_choice.question_id
+                LEFT JOIN
+            question_judge ON everytest.everytest_type = 0
+                AND everytest.everytest_question_id = question_judge.question_id
+                JOIN
+            question_type ON (
+                (everytest.everytest_type = 1 AND question_choice.question_type_id = question_type.type_id) OR
+                (everytest.everytest_type = 0 AND question_judge.question_type_id = question_type.type_id)
+                )
+        WHERE
+            everytest.everytest_test_id = #{testId}
+          AND everytest.everytest_is_correct = 0
+        GROUP BY
+            type_id
+        order by count desc
+
+
+    </select>
+    <select id="getResult2" resultType="com.eight.evaluation.dto.Result1">
+
+        SELECT
+            type_id,type_name,
+            COUNT(*) AS count
+        FROM
+            everytest
+                LEFT JOIN
+            question_choice ON everytest.everytest_type = 1
+                AND everytest.everytest_question_id = question_choice.question_id
+                LEFT JOIN
+            question_judge ON everytest.everytest_type = 0
+                AND everytest.everytest_question_id = question_judge.question_id
+                JOIN
+            question_type ON (
+                (everytest.everytest_type = 1 AND question_choice.question_type_id = question_type.type_id) OR
+                (everytest.everytest_type = 0 AND question_judge.question_type_id = question_type.type_id)
+                )
+        WHERE
+            everytest.everytest_test_id = #{testId}
+          AND everytest.everytest_is_correct = 1
+        GROUP BY
+            type_id
+        order by count desc
+    </select>
+
+
+</mapper>

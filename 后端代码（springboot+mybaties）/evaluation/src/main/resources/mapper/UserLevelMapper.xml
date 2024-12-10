@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eight.evaluation.mapper.UserLevelMapper">
+
+    <resultMap id="BaseResultMap" type="com.eight.evaluation.entity.UserLevel">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="userRank" column="user_rank" jdbcType="INTEGER"/>
+            <result property="subjectId" column="subject_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <update id="updateRank">
+        update user_level
+        set user_rank = #{level}
+        where user_id = #{userId} and subject_id = #{subjectId}
+    </update>
+    <select id="selectUserSubjectId" resultType="java.lang.Integer">
+        select subject_id
+        from user_level
+        where user_id = #{userId}
+    </select>
+</mapper>
