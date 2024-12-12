@@ -193,9 +193,11 @@ Page({
     const testId = wx.getStorageSync('testId'); // 获取测试 ID
     const userAnswers = wx.getStorageSync('userAnswers') || {}; // 获取用户答案对象
     const totalQuestions = wx.getStorageSync('questions').length; // 获取题目总数
-
-    
+    const answeredCount = Object.keys(userAnswers).length; // 获取已答题目数
+    const unansweredCount = totalQuestions - answeredCount; // 获取未答题目数
     const userAnswerArray: string[] = []; // 用于存储最终的答案数组
+    
+
     
     // 遍历每一道题，构建答案数组
     for (let i = 1; i <= totalQuestions; i++) {
@@ -213,10 +215,11 @@ Page({
       }
     }
   
-    // 提交答案到服务器
+    if (unansweredCount === 0) {
+      // 如果所有题目都已答完
       wx.showModal({
         title: '提交确认',
-        content: '确定要提交所有答案吗？',
+        content: `您已答${answeredCount}题，未答${unansweredCount}题。确定要提交所有答案吗？`,
         success: (res) => {
           if (res.confirm) {
             SubmitQuestionAnswer({
@@ -231,9 +234,11 @@ Page({
                   duration: 2000,
                 });
                 console.log('提交的答案:', { testId, userAnswer: userAnswerArray });
+                
                 wx.removeStorageSync('userAnswers'); // 清除用户答案
                 wx.removeStorageSync('questions'); // 清除题目数据
-                // 提交成功后跳转到结果页面    
+        
+                // 提交成功后跳转到结果页面
                 wx.redirectTo({
                   url: `/pages/FinishTest/profile?testId=${testId}`,
                 });
@@ -256,7 +261,80 @@ Page({
           }
         },
       });
-
+    } else {
+      // 如果有未答的题目
+      wx.showModal({
+        title: '未答题目提醒',
+        content: `您已答${answeredCount}题，未答${unansweredCount}题。是否跳转到未答题目？`,
+        confirmText: '跳转未答',  // 修改“确定”按钮的文字
+        cancelText: '直接提交',    // 修改“取消”按钮的文字
+        success: (res) => {
+          if (res.confirm) {
+            // 获取所有题目列表
+            const questions = wx.getStorageSync('questions');
+            
+            // 遍历题目，找出第一个未答题目
+            let firstUnansweredQuestion = -1;
+            for (let i = 0; i < totalQuestions; i++) {
+              if (!userAnswers[i + 1]) { // 如果该题未答
+                firstUnansweredQuestion = i + 1; // 题号从1开始
+                break;
+              }
+            }
+  
+            if (firstUnansweredQuestion !== -1) {
+              const questionType = questions[firstUnansweredQuestion - 1].everytestType;
+              // 跳转到未答题目页面
+              if (questionType === 0) {
+                wx.redirectTo({
+                  url: `/pages/Judge/profile?questionNo=${firstUnansweredQuestion}`,
+                });
+              } else {
+                wx.redirectTo({
+                  url: `/pages/Choose/profile?questionNo=${firstUnansweredQuestion}`,
+                });
+              }
+            }
+          } else {
+            // 直接提交答案
+            SubmitQuestionAnswer({
+              testId,
+              userAnswer: userAnswerArray
+            })
+            .then((response) => {
+              if (response.code === 200) {
+                wx.showToast({
+                  title: '答案提交成功',
+                  icon: 'success',
+                  duration: 2000,
+                });
+                console.log('提交的答案:', { testId, userAnswer: userAnswerArray });
+                wx.removeStorageSync('userAnswers'); // 清除用户答案
+                wx.removeStorageSync('questions'); // 清除题目数据
+                // 提交成功后跳转到结果页面
+                wx.redirectTo({
+                  url: `/pages/FinishTest/profile?testId=${testId}`,
+                });
+              } else {
+                wx.showToast({
+                  title: '提交失败',
+                  icon: 'none',
+                  duration: 2000,
+                });
+              }
+            })
+            .catch((error) => {
+              console.error('提交答案出错:', error);
+              wx.showToast({
+                title: '提交失败，请稍后重试',
+                icon: 'none',
+                duration: 2000,
+              });
+            });
+          }
+        },
+      });
+    }
   },
   
 saveCurrentAnswer: function () {

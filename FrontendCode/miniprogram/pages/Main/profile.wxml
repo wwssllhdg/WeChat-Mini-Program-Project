@@ -7,7 +7,7 @@
                  首页
                 </text>
            </view>
-           <image class="picture2" mode="widthFix" src="http://106.54.212.158:8888/images/picture3.png" bindtap="navigateToUserInformation"></image>
+           <image class="picture2" src="{{userLogo}}" mode="aspectFill"  bindtap="navigateToUserInformation"></image>
       </view>
       <view class="a">
             <image class="picture4" mode="widthFix" src="http://106.54.212.158:8888/images/picture2.png" ></image>

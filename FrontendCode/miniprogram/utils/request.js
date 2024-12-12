@@ -40,12 +40,38 @@ export default (params) => {
       success(response) {
 
         console.log("请求成功，response：", response); // 查看完整的响应数据
-        // if(response.statusCode === 401){
-        //   TokenOutTime();
-        // }
-        const res = response.data;
-        console.log("响应数据：", res);       
+        if (response.statusCode === 401) {
+          console.log("token过期");    
+          wx.showToast({
+            title: '登录过期,请重新登录',
+            icon: 'none',
+            duration: 2000 // 设置持续时间为 2 秒
+          });
+        
+          // 延迟跳转，等待 2 秒后再执行跳转
+          setTimeout(() => {
+            // 清除本地缓存的 token 和用户信息
+            wx.removeStorageSync('token');
+            wx.removeStorageSync('subjectId');
+            wx.removeStorageSync('testId');
+            wx.removeStorageSync('questions');
+            wx.removeStorageSync('userAnswers');
+            wx.removeStorageSync('currentQuestionData');   
+            wx.removeStorageSync('userId');
+            wx.removeStorageSync('subject');
+            wx.removeStorageSync('userLogo');
+            // wx.removeStorageSync('userInfo');
+            // 跳转到登录页面
+            wx.navigateTo({
+              url: '/pages/Log/profile' // 修改为你的登录页路径
+            });
+          }, 2000);
+        }else{
+          console.log("token尚未过期");       
+          const res = response.data;
+          console.log("响应数据：", res);       
           resolve(res);
+        }
       },
       fail(err) {
         console.log(err);
@@ -70,3 +96,4 @@ export default (params) => {
     });
   }).catch((e) => {});
 };
+

@@ -11,7 +11,6 @@
     "pages/Subject/profile",
     "pages/FinishTest/profile",
     "pages/UserInformation/profile",
-
     "pages/Register/profile"
   ],
   "window": {

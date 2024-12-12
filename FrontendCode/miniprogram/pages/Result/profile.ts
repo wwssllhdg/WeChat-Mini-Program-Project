@@ -31,7 +31,7 @@ Page({
     try {
       const { testId } = this.data;  // 从页面数据中获取 testId
       const res = await ShowTrainscript({testId});
-
+      console.log("res.code is ",res.code);
       if (res.code === 200) {
         // 更新成绩数据
         this.setData({
@@ -49,7 +49,7 @@ Page({
       } else {
         wx.showToast({
           title: '获取数据失败',
-          icon: 'error',
+          icon: 'none',
         });
       }
     } catch (error) {

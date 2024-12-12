@@ -169,17 +169,19 @@
 
 /* 选项容器样式 */
 .option-container {
+    border-radius: 10px;        /* 保持整体圆角 */
     display: flex;
     align-items: stretch;         /* 让子元素填满整个高度 */
     background-color: #e0e0e0;   /* 默认内容背景色 */
-    border: 1px solid #ccc;      /* 默认边框颜色 */
+    box-shadow: 0 0 0 1px #ccc;  /* 使用阴影模拟边框 */
     border-radius: 10px;          /* 圆角边框 */
     margin: 10px 0;              /* 上下间距 */
     overflow: hidden;            /* 确保子元素不会超出边框 */
     transition: all 0.3s ease;
-    height: 50px;
+    min-height: 50px;
+    max-height: 80px;     /* 可根据需要调整最大高度 */
     width: 280px;
-    overflow-y: auto;             /* 超出时允许滚动 */
+
   }
   
   /* 选中状态样式 */
@@ -200,6 +202,7 @@
     background-color: #fff;      /* 默认背景颜色（白色） */
     border-right: 2px solid #ccc;/* 右侧分隔线 */
     transition: all 0.3s ease;
+
   }
   
   /* 选中时的选项前缀样式 */
@@ -215,8 +218,7 @@
     display: flex;
     align-items: center;
     padding: 10px 15px;         /* 调整内边距，增加垂直空间 */
-    overflow-y: auto;           /* 如果内容过多，显示滚动条 */
-    max-height: 100px;          /* 限制最大高度，超过时滚动 */
+
     line-height: 1.5;           /* 设置行高，增加可读性 */
   }
   

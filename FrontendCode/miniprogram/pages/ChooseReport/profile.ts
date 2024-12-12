@@ -95,6 +95,7 @@ Page({
    // 注意:退出之后是直接提交的
    goBack: function() {
     const { testId } = this.data;  // 从页面数据中获取 testId
+    console.log("testId is ",testId);
     wx.redirectTo({
       url: `/pages/Result/profile?testId=${testId}`, // 使用反引号进行插值
     });

@@ -1,10 +1,11 @@
 import { GetHomepageInformation } from "../../api/API"; 
 import { GetTestQuestion } from "../../api/API"; 
-
+import { GetUserInformation } from '../../api/API.js';
 // // 调用时可以选择是否显示提示信息
 
 Page({
   data: {
+    userLogo:"",
     userId: '', // 用户ID
     subjectId: -1, // 题目集ID
     subjectName: '', // 题目集名称
@@ -32,6 +33,53 @@ Page({
       return;
     }
     console.log("UserId is ",userId);
+
+
+
+    // 假设从后端获取用户资料
+   GetUserInformation({userId}) // 参数以对象形式传递
+   .then((response) => {
+    if (response.code === 200) {
+      const userProfile = response.data;  // 获取后端返回的用户资料
+      if(userProfile != null){
+              // 更新页面数据
+      this.setData({
+        userLogo:userProfile.userLogo,
+      });
+      wx.setStorageSync('userLogo', this.data.userLogo);
+      wx.setStorageSync('userLogo', userProfile.userLogo);
+      console.log("用户头像已存储:", userProfile.userLogo); 
+      console.log('用户资料:', userProfile);
+      }
+
+     } else {
+       wx.showToast({
+         title: response.msg || '访问失败',
+         icon: 'error',
+         duration: 2000,
+       });
+     }
+   })
+   .catch((error) => {
+     console.error('访问失败:', error);
+     wx.showToast({
+       title: '网络异常，请稍后重试',
+       icon: 'error',
+       duration: 2000,
+     });
+   });
+
+    const storedUserLogo = wx.getStorageSync('userLogo');
+    console.log("读取到的用户头像:", storedUserLogo);
+
+    if (storedUserLogo) {
+      this.setData({
+        userLogo: storedUserLogo,
+      });
+      console.log("用户头像存在");
+    }else{
+      console.log("用户头像不存在");
+    }
      // 检查本地存储的 subjectId
       let subjectId = wx.getStorageSync('subjectId');
 
@@ -78,8 +126,6 @@ Page({
 
         wx.setStorageSync('subjectId', subjectId); // 更新本地subjectId
         console.log('后端返回的数据:', response.data);
-      }else if(response.statusCode === 401){
-        TokenOutTime();           // 显示提示并跳转
       }else{
         console.error('获取数据失败:', response.msg);
         wx.showToast({
@@ -175,8 +221,6 @@ Page({
                 url: `/pages/Judge/profile?questionNo=1`,
               });
             }
-          } else if(response.statusCode === 401){
-                TokenOutTime();           // 显示提示并跳转
           }else{
             console.error('请求失败:', response.msg);
             wx.showToast({
