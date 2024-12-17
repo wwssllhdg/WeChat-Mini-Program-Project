@@ -27,18 +27,21 @@
     <view class="info-item">
       <text class="info-label">生日|</text>
       <view class="picker-container">
-        <picker mode="date" start="1980-1-30" bindchange="onBirthdateChange" value="{{date}}">
+        <!-- 设置value为默认日期1980-01-01 -->
+        <picker mode="date" start="1980-01-01" bindchange="onBirthdateChange" value="{{birthdate}}">
           <view class="input-card">
             <block wx:if="{{showPlaceholder}}">
               <text class="input-travelDate">选择生日</text>
             </block>
             <block wx:else>
-              <text class="picker-text">{{date}}</text>
+              <text class="picker-text">{{birthdate}}</text>
             </block>
           </view>
         </picker>
       </view>
     </view>
+
+
 
     <view class="info-item">
       <text class="info-label">签名|</text>

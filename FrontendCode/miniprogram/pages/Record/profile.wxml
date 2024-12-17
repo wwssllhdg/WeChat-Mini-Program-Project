@@ -43,10 +43,17 @@
 
 <!-- 显示测试时间和测试得分 -->
 <view class="second">
-  <view class="test-info">
-    <text class="test-date">测试时间: {{selectedTestTime}}</text>
-    <text class="test-score">测试得分: {{selectedTestScore}}分</text>
-  </view>
+  <block wx:if="{{testCount > 0}}">
+    <view class="test-info">
+      <text class="test-date">测试时间: {{selectedTestTime}}</text>
+      <text class="test-score">测试得分: {{selectedTestScore}}分</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="test-info">
+      <text class="test-date">暂无测试记录</text>
+    </view>
+  </block>
 </view>
 
 

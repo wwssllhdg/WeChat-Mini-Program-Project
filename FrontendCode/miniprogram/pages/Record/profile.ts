@@ -35,25 +35,29 @@ Page({
     this.loadTestRecords(subjectId);
   },
 
-  /**
-   * 处理选项卡点击事件
-   * @param e 事件对象
-   */
+ 
+
   onTabSelect(e: { currentTarget: { dataset: { subjectId: string } } }) {
     const subjectId = parseInt(e.currentTarget.dataset.subjectId, 10);
-
-    // 更新选中的科目
-    this.setData({ 
+  
+    this.setData({
       selectedSubject: subjectId,
-      scrollLeft: 0,  // 重置滚动位置
+      selectedTestTime: '',
+      selectedTestScore: '',
+      testCount: 0,
+      averageScore: 0,
+      Buttons: [],
+      swiperButtons: [],
+      scrollLeft: 0,
     });
-
-    // 保存到本地存储，便于页面重新加载时保持选中状态
+  
     wx.setStorageSync('subjectId', subjectId);
-
-    // 重新加载测试记录
+  
+    // 重新加载数据
     this.loadTestRecords(subjectId);
   },
+  
+  
   /**
    * 根据 subjectId 返回科目名称
    */
@@ -77,43 +81,44 @@ getSubjectName(subjectId: number): string {
     const userId = wx.getStorageSync('userId');
     ShowAllTestRecord({ subjectId, userId })
       .then((res) => {
-        if (res.code === 200) {
+        if (res.code === 200 && res.data.length > 0) {
+          // 正常情况：有测试记录
           this.processBackendData(res.data);
   
-          if (res.data.length > 0) {
-            // 计算测试次数和平均分
-            const testCount = res.data.length;
-            const totalScore = res.data.reduce((sum: any, item: { testScore: any; }) => sum + item.testScore, 0);
-            const averageScore = parseFloat((totalScore / testCount).toFixed(2));
+          const testCount = res.data.length;
+          const totalScore = res.data.reduce((sum: any, item: { testScore: any; }) => sum + item.testScore, 0);
+          const averageScore = parseFloat((totalScore / testCount).toFixed(2));
   
-            // 提取所有分数和标签
-            const scores = res.data.map((item: { testScore: any; }) => item.testScore);
-            const labels = res.data.map((_: any, index: number) => `测试${index + 1}`);
+          this.setData({
+            currentSwiperIndex: 0,
+            selectedIndex: 0,
+            selectedTestTime: formatTestTime(res.data[0].testTime),
+            selectedTestScore: res.data[0].testScore,
+            testCount: testCount,
+            averageScore: averageScore,
+            subjectName: this.getSubjectName(subjectId),
+          });
   
-            // 初始化第一个测试记录的时间和得分
-            this.setData({
-              currentSwiperIndex: 0, // 重置 swiper 显示的分组
-              selectedIndex: 0,
-              selectedTestTime: formatTestTime(res.data[0].testTime),
-              selectedTestScore: res.data[0].testScore,
-              testCount: testCount,
-              averageScore: averageScore,
-              subjectName: this.getSubjectName(subjectId), // 传递 number 类型的 subjectId
-            });
+          // 提取分数和标签用于图表
+          const scores = res.data.map((item: { testScore: any; }) => item.testScore);
+          const labels = res.data.map((_: any, index: number) => `测试${index + 1}`);
   
-            // 绘制包含所有测试记录的图表
-
-
-            this.drawChart(scores, labels);
-          }
+          // 动态绘制图表
+          this.drawChart(scores, labels);
         } else {
-          console.error('请求失败或数据格式不正确');
+          // 无测试记录情况，清空图表
           this.setData({
             Buttons: [],
             swiperButtons: [],
             testCount: 0,
             averageScore: 0,
+            selectedTestTime: '',
+            selectedTestScore: '',
+            subjectName: this.getSubjectName(subjectId),
           });
+  
+          // 清空图表
+          this.clearChart();
         }
       })
       .catch((error) => {
@@ -123,9 +128,19 @@ getSubjectName(subjectId: number): string {
           swiperButtons: [],
           testCount: 0,
           averageScore: 0,
+          selectedTestTime: '',
+          selectedTestScore: '',
         });
+        this.clearChart();
       });
   },
+  clearChart() {
+    const context = wx.createCanvasContext('scoreChart');
+    context.clearRect(0, 0, 400, 200); // 清空画布区域
+    context.draw();                   // 渲染空白画布
+  },
+  
+
   
   onCircleTap(e: { currentTarget: { dataset: { index: number, testId: number, testScore: number, testTime: string } } }) {
     const { index, testId, testScore, testTime } = e.currentTarget.dataset;
@@ -185,7 +200,7 @@ getSubjectName(subjectId: number): string {
   drawChart(scores: number[], labels: string[]) {
     const context = wx.createCanvasContext('scoreChart');
     const dataCount = scores.length;  
-    const pointWidth = 51; // 每个数据点宽度，比如 80px
+    const pointWidth = 55; // 每个数据点宽度，比如 80px
 
     this.setData({
       chartContainerWidth: dataCount * pointWidth, // 动态计算容器宽度

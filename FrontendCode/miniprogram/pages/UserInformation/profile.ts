@@ -4,11 +4,10 @@ Page({
   data: {
     selectedGender: 'male', // 默认选中男
     nickname: '',
-    birthdate: '',        // 生日数据初始化为空字符串
     userLogo: '',
     signature: '',
     school: '',
-    date: '1980-01-30',   // 设置默认日期
+    birthdate: '1980-01-01',   // 初始化默认生日为1980-01-01
     showPlaceholder: true, // 控制是否显示占位符
   },
 
@@ -27,13 +26,15 @@ Page({
     });
   },
 
-  // 更新生日
+  // 选择生日时触发的事件
   onBirthdateChange(e: { detail: { value: any; }; }) {
+    console.log("Selected date:", e.detail.value);  // 调试查看选中的日期
     this.setData({
-      birthdate: e.detail.value,
-      showPlaceholder: false,
+      birthdate: e.detail.value,   // 更新实际的生日
+      showPlaceholder: false,      // 隐藏占位符
     });
   },
+  
 
   // 更新签名
   onSignatureChange(e: { detail: { value: any; }; }) {

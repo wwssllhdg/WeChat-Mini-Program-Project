@@ -11,6 +11,8 @@ Page({
     testEvaluation: '',
     questions: [],
     selectedIndex: -1, // 用于保存选中索引，初始值为 -1
+    badResult:"",
+    goodResult:"",
   },
 
   // 页面加载时调用获取成绩单
@@ -39,6 +41,8 @@ Page({
           testEvaluation: res.data.testEvaluation,
           questions: res.data.question,
           testLevel:res.data.testLevel,
+          badResult:res.data.badResult,
+          goodResult:res.data.goodResult,
         });
             // 计算正确和错误的数量
         const correctCount = res.data.question.filter((item: { everytestIsCorrect: number; }) => item.everytestIsCorrect === 1).length;

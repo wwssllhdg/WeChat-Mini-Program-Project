@@ -55,12 +55,12 @@
   <view class="analysis-section">
     <text class="section-title">本次测试分析</text>
     <view class="analysis-item">
-      <image src="http://106.54.212.158:8888/images/picture13.png" class="icon" />
-      <text class="analysis-text">你的代码分析能力较强</text>
+      <!-- <image src="http://106.54.212.158:8888/images/picture13.png" class="icon" /> -->
+      <text class="analysis-text">{{goodResult}}</text>
     </view>
     <view class="analysis-item">
-      <image src="http://106.54.212.158:8888/images/picture12.png" class="icon" />
-      <text class="analysis-text">你的逻辑运算能力较弱</text>
+      <!-- <image src="http://106.54.212.158:8888/images/picture12.png" class="icon" /> -->
+      <text class="analysis-text">{{badResult}}</text>
     </view>
   </view>
 
